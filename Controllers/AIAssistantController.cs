@@ -1,24 +1,53 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HCI.AiAssistant.API.Models.DTOs.AIAssistantController;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HCI.AiAssistant.API.Controllers;
+using HCI.AIAssistant.API.Services;
+using HCI.AIAssistant.API.Models.DTOs;
+using HCI.AiAssistant.API.Models.DTOs.AIAssistantController;
+
+namespace HCI.AIAssistant.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class AIAssistantController : ControllerBase
 {
+    private readonly IAIAssistantService _aIAssistantService;
+    private readonly IParametricFunctions _parametricFunctions;
+
+    public AIAssistantController(
+        IAIAssistantService aIAssistantService,
+        IParametricFunctions parametricFunctions
+    )
+    {
+        _aIAssistantService = aIAssistantService;
+        _parametricFunctions = parametricFunctions;
+    }
 
     [HttpPost("/message")]
-    public async Task<ActionResult<AIAssistantControllerPostMessageResponseDTO>> PostMessageAsync([FromBody] AIAssistantControllerPostMessageRequestDTO request)
+    [ProducesResponseType(typeof(AIAssistantControllerPostMessageResponseDTO), 200)]
+    [ProducesResponseType(typeof(ErrorResponseDTO), 400)]
+    public async Task<ActionResult> PostMessage([FromBody] AIAssistantControllerPostMessageRequestDTO request)
     {
-        var responce = new AIAssistantControllerPostMessageResponseDTO
+        if (!_parametricFunctions.ObjectExistsAndHasNoNullPublicProperties(request))
         {
-            textMessage = $"You said: {request.textMessage}"
+            return BadRequest(
+                new ErrorResponseDTO()
+                {
+                    TextErrorTitle = "AtLeastOneNullParameter",
+                    TextErrorMessage = "Some parameters are null/missing.",
+                    TextErrorTrace = _parametricFunctions.GetCallerTrace()
+                }
+            );
+        }
+
+#pragma warning disable CS8604
+        string textMessageResponse = await _aIAssistantService.SendMessageAndGetResponseAsync(request.textMessage);
+#pragma warning restore CS8604
+
+        AIAssistantControllerPostMessageResponseDTO response = new()
+        {
+            textMessage = textMessageResponse
         };
-        return Ok(responce);
+
+        return Ok(response);
     }
 }
