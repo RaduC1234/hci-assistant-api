@@ -46,3 +46,8 @@ D:\Facultate\An3\HCI\hci_azure_laboratories\ai-assistnant-api\src\HCI.AiAssistan
 D:\Facultate\An3\HCI\hci_azure_laboratories\ai-assistnant-api\src\HCI.AiAssistant.API\bin\Debug\net8.0\System.Memory.Data.dll
 D:\Facultate\An3\HCI\hci_azure_laboratories\ai-assistnant-api\src\HCI.AiAssistant.API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 D:\Facultate\An3\HCI\hci_azure_laboratories\ai-assistnant-api\src\HCI.AiAssistant.API\bin\Debug\net8.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Facultate\An3\HCI\hci_azure_laboratories\ai-assistnant-api\src\HCI.AiAssistant.API\bin\Debug\net8.0\Microsoft.Azure.Amqp.dll
+D:\Facultate\An3\HCI\hci_azure_laboratories\ai-assistnant-api\src\HCI.AiAssistant.API\bin\Debug\net8.0\Microsoft.Azure.Devices.dll
+D:\Facultate\An3\HCI\hci_azure_laboratories\ai-assistnant-api\src\HCI.AiAssistant.API\bin\Debug\net8.0\Microsoft.Azure.Devices.Shared.dll
+D:\Facultate\An3\HCI\hci_azure_laboratories\ai-assistnant-api\src\HCI.AiAssistant.API\bin\Debug\net8.0\Microsoft.Rest.ClientRuntime.dll
+D:\Facultate\An3\HCI\hci_azure_laboratories\ai-assistnant-api\src\HCI.AiAssistant.API\bin\Debug\net8.0\Newtonsoft.Json.dll
