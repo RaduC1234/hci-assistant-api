@@ -7,5 +7,5 @@ namespace HCI.AiAssistant.API.Models.DTOs.AIAssistantController;
 
 public class AIAssistantControllerPostMessageRequestDTO
 {
-    public string? textMessage { get; set; }
+    public string? TextMessage { get; set; }
 }
